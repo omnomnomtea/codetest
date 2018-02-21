@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { TabContainer } from './index'
+import { TabContainer } from './TabContainer'
 import { fetchBooks } from '../store'
 
 class Main extends React.Component {

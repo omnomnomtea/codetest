@@ -1,4 +1,4 @@
-import booksToLoad from 'data.json';
+import booksToLoad from '../data.json';
 
 // action types
 const LOAD_BOOKS = 'LOAD_BOOKS';

@@ -1,0 +1,26 @@
+
+module.exports = {
+  entry: './index.js',
+  output: {
+    path: __dirname,
+    filename: './public/bundle.js'
+  },
+  devtool: 'source-map',
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel-loader',
+        query:
+          {
+            presets: ['react']
+          }
+      }
+    ]
+  },
+  // When we're in development, we can use this handy live-reload plugin
+  // to refresh the page for us every time we make a change to our client-side
+  // files. It's like `nodemon` for the front end!
+  plugins: []
+}
