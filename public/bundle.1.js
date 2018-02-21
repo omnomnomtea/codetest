@@ -22260,20 +22260,13 @@ const ProductList = props => {
     products.map(product => {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        { key: product.id, className: 'product' },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: "/images/" + product.image }),
+        { key: product.id },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: "/" + product.image }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'h4',
           null,
           'Title: ',
           product.name
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'span',
-          null,
-          'Price: ',
-          product.price,
-          ' '
         )
       );
     })
