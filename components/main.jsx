@@ -1,11 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {TabContainer } from './index'
+import { TabContainer } from './index'
+import { fetchBooks } from '../store'
 
 class Main extends React.Component {
 
-  render() {
+  componentDidMount() {
+    this.props.fetchBooks();
+  }
 
+  render() {
     return (
       <React.Fragment>
         <nav>
@@ -13,11 +17,15 @@ class Main extends React.Component {
         </nav>
         <ProductList />
         <footer>
-        © Company 2018
+          © Company 2018
         </footer>
       </React.Fragment>
     )
   }
-
-
 }
+
+const mapDispatch = (dispatch) => ({
+  fetchBooks: () => dispatch(fetchBooks());
+});
+
+export default connect(null, mapDispatch)(Main)
