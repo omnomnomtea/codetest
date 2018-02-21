@@ -1,10 +1,9 @@
-import booksToLoad from '../data.json';
 
 // action types
 const LOAD_BOOKS = 'LOAD_BOOKS';
 
 // default state
-const defaultBooks = [];
+import defaultBooks from '../data.json';
 
 // action creators
 const loadBooks = (books) => ({
@@ -12,13 +11,7 @@ const loadBooks = (books) => ({
   books,
 });
 
-// thunks
-// this is a fake thunk. We could just have set the initial state to booksToLoad
-// I'm sort of mocking what I would do if this were an axios request,
-// since that's a more realistic use case than loading data from json
-export const fetchBooks = () =>
-  dispatch =>
-    dispatch(loadBooks(booksToLoad));
+//thunks here
 
 // reducer
 export default function (state = defaultBooks, action) {

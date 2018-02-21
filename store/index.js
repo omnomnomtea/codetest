@@ -7,11 +7,8 @@ const reducer = combineReducers({
   books,
   tabs,
 });
-const middleware = composeWithDevTools(applyMiddleware(
-  createLogger({ collapsed: true })
-));
 
-const store = createStore(reducer, middleware);
+const store = createStore(reducer);
 
 export default store;
 export * from './books';

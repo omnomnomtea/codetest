@@ -804,7 +804,7 @@ module.exports = g;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux_logger___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_redux_logger__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__books__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tabs__ = __webpack_require__(15);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2__books__["b"]; });
+/* unused harmony namespace reexport */
 /* unused harmony namespace reexport */
 
 
@@ -815,9 +815,8 @@ const reducer = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redux__["b" /*
   books: __WEBPACK_IMPORTED_MODULE_2__books__["a" /* default */],
   tabs: __WEBPACK_IMPORTED_MODULE_3__tabs__["a" /* default */]
 });
-const middleware = composeWithDevTools(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* applyMiddleware */])(__WEBPACK_IMPORTED_MODULE_1_redux_logger___default()({ collapsed: true })));
 
-const store = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redux__["d" /* createStore */])(reducer, middleware);
+const store = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* createStore */])(reducer);
 
 /* harmony default export */ __webpack_exports__["a"] = store;
 
@@ -831,12 +830,11 @@ const store = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redux__["d" /* c
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__data_json__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__data_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__data_json__);
 
-
 // action types
 const LOAD_BOOKS = 'LOAD_BOOKS';
 
 // default state
-const defaultBooks = [];
+
 
 // action creators
 const loadBooks = books => ({
@@ -844,16 +842,10 @@ const loadBooks = books => ({
   books
 });
 
-// thunks
-// this is a fake thunk. We could just have set the initial state to booksToLoad
-// I'm sort of mocking what I would do if this were an axios request,
-// since that's a more realistic use case than loading data from json
-const fetchBooks = () => dispatch => dispatch(loadBooks(__WEBPACK_IMPORTED_MODULE_0__data_json___default.a));
-/* harmony export (immutable) */ __webpack_exports__["b"] = fetchBooks;
-
+//thunks here
 
 // reducer
-/* harmony default export */ __webpack_exports__["a"] = function (state = defaultBooks, action) {
+/* harmony default export */ __webpack_exports__["a"] = function (state = __WEBPACK_IMPORTED_MODULE_0__data_json___default.a, action) {
   switch (action.type) {
     case LOAD_BOOKS:
       return action.books;
@@ -2003,10 +1995,10 @@ var ActionTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__compose__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_warning__ = __webpack_require__(32);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_0__createStore__["b"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_0__createStore__["b"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__combineReducers__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_2__bindActionCreators__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__["a"]; });
+/* unused harmony reexport applyMiddleware */
 /* unused harmony reexport compose */
 
 
@@ -2073,10 +2065,6 @@ function warning(message) {
 
 class Main extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
-  componentDidMount() {
-    this.props.fetchBooks();
-  }
-
   render() {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.Fragment,
@@ -2084,9 +2072,8 @@ class Main extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'nav',
         null,
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__TabContainer__["TabContainer"], null)
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__TabContainer__["a" /* default */], null)
       ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(ProductList, null),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'footer',
         null,
@@ -2096,11 +2083,7 @@ class Main extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   }
 }
 
-const mapDispatch = dispatch => ({
-  fetchBooks: () => dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__store__["b" /* fetchBooks */])())
-});
-
-/* harmony default export */ __webpack_exports__["a"] = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* connect */])(null, mapDispatch)(Main);
+/* harmony default export */ __webpack_exports__["a"] = Main;
 
 /***/ }),
 /* 34 */
@@ -2167,9 +2150,37 @@ module.exports = [{"category":"Best Picture Books","products":[{"name":"The Day 
 
 class TabContainer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
-  render() {}
+  render() {
+    // these tabs should come from the state but I'm running out of time
+    // so I'm hardcoding a bit
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      { className: 'Tab-container' },
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: `tab ${this.props.tab === 0 ? "active" : "inactive"}` },
+        'All Products'
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: `tab ${this.props.tab === 1 ? "active" : "inactive"}` },
+        'Best Picture Books'
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: `tab ${this.props.tab === 2 ? "active" : "inactive"}` },
+        'Books (Ages 3-5)'
+      )
+    );
+  }
 
 }
+/* unused harmony export TabContainer */
+
+
+const mapState = state => ({ tab: state.tabs });
+
+/* harmony default export */ __webpack_exports__["a"] = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* connect */])(mapState)(TabContainer);
 
 /***/ }),
 /* 37 */
@@ -21846,7 +21857,7 @@ module.exports = exports['default'];
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compose__ = __webpack_require__(29);
-/* harmony export (immutable) */ __webpack_exports__["a"] = applyMiddleware;
+/* unused harmony export default */
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 

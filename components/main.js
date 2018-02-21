@@ -1,13 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { TabContainer } from './TabContainer'
+import TabContainer from './TabContainer'
 import { fetchBooks } from '../store'
 
-class Main extends React.Component {
-
-  componentDidMount() {
-    this.props.fetchBooks();
-  }
+ class Main extends React.Component {
 
   render() {
     return (
@@ -15,7 +11,9 @@ class Main extends React.Component {
         <nav>
           <TabContainer />
         </nav>
-        <ProductList />
+        {
+          //<ProductList />
+        }
         <footer>
           © Company 2018
         </footer>
@@ -24,8 +22,5 @@ class Main extends React.Component {
   }
 }
 
-const mapDispatch = (dispatch) => ({
-  fetchBooks: () => dispatch(fetchBooks()),
-});
 
-export default connect(null, mapDispatch)(Main)
+export default Main;
