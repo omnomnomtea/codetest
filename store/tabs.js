@@ -5,7 +5,7 @@ const SET_TAB = 'SET_TAB';
 const defaultTab = 0;
 
 // action creators
-const setTab = (tabNumber) => ({
+export const setTab = (tabNumber) => ({
   type: SET_TAB,
   tabNumber,
 });

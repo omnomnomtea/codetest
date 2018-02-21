@@ -805,7 +805,7 @@ module.exports = g;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__books__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tabs__ = __webpack_require__(15);
 /* unused harmony namespace reexport */
-/* unused harmony namespace reexport */
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_3__tabs__["b"]; });
 
 
 
@@ -870,6 +870,8 @@ const setTab = tabNumber => ({
   type: SET_TAB,
   tabNumber
 });
+/* harmony export (immutable) */ __webpack_exports__["b"] = setTab;
+
 
 // thunks would go here if needed
 
@@ -2069,8 +2071,8 @@ class Main extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
   render() {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.Fragment,
-      null,
+      'div',
+      { className: 'main' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'nav',
         null,
@@ -2091,7 +2093,7 @@ const mapState = state => {
   let currentBooks = state.books;
   if (state.tabs !== 0) {
     //if we want a specific category
-    currentBooks = state.books[state.tabs].products;
+    currentBooks = state.books[state.tabs - 1].products;
   } else {
     // if we need to join all categories into one
     const totalBooks = currentBooks.map(bookList => bookList.products);
@@ -2172,6 +2174,8 @@ module.exports = [{"category":"Best Picture Books","products":[{"name":"The Day 
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store__ = __webpack_require__(13);
+
 
 
 
@@ -2185,17 +2189,17 @@ class TabContainer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compone
       { className: 'Tab-container' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        { className: `tab ${this.props.tab === 0 ? "active" : "inactive"}` },
+        { className: `tab ${this.props.tab === 0 ? "active" : "inactive"}`, onClick: () => this.props.changeTab(0) },
         'All Products'
       ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        { className: `tab ${this.props.tab === 1 ? "active" : "inactive"}` },
+        { className: `tab ${this.props.tab === 1 ? "active" : "inactive"}`, onClick: () => this.props.changeTab(1) },
         'Best Picture Books'
       ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        { className: `tab ${this.props.tab === 2 ? "active" : "inactive"}` },
+        { className: `tab ${this.props.tab === 2 ? "active" : "inactive"}`, onClick: () => this.props.changeTab(2) },
         'Books (Ages 3-5)'
       )
     );
@@ -2207,7 +2211,11 @@ class TabContainer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compone
 
 const mapState = state => ({ tab: state.tabs });
 
-/* harmony default export */ __webpack_exports__["a"] = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* connect */])(mapState)(TabContainer);
+const mapDispatch = dispatch => ({
+  changeTab: num => dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__store__["b" /* setTab */])(num))
+});
+
+/* harmony default export */ __webpack_exports__["a"] = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* connect */])(mapState, mapDispatch)(TabContainer);
 
 /***/ }),
 /* 37 */

@@ -1,3 +1,9 @@
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+
 .active {
   background-color: white;
 }
@@ -9,4 +15,35 @@
   display: inline-block;
   padding: 1em 5em;
   margin: 2px 5px;
+}
+
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 3px 0px;
+}
+
+.product {
+  padding: 5px;
+  margin: 5px;
+}
+
+.product img {
+ margin: 3px;
+}
+
+body {
+  min-height: 100%;
+  position: relative;
+}
+
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: lightgreen;
+  margin: 0;
+  margin-top: 5px;
+
 }

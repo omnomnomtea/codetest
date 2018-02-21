@@ -8,7 +8,7 @@ class Main extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div className="main">
         <nav>
           <TabContainer />
         </nav>
@@ -16,7 +16,7 @@ class Main extends React.Component {
         <footer>
           © Company 2018
         </footer>
-      </React.Fragment>
+      </div>
     )
   }
 }
@@ -27,7 +27,7 @@ const mapState = (state) => {
 
   let currentBooks = state.books;
   if (state.tabs !== 0) { //if we want a specific category
-    currentBooks = state.books[state.tabs].products;
+    currentBooks = state.books[state.tabs-1].products;
   }
   else { // if we need to join all categories into one
     const totalBooks = currentBooks.map(bookList => bookList.products);
