@@ -25,7 +25,7 @@ class Main extends React.Component {
 }
 
 const mapDispatch = (dispatch) => ({
-  fetchBooks: () => dispatch(fetchBooks());
+  fetchBooks: () => dispatch(fetchBooks()),
 });
 
 export default connect(null, mapDispatch)(Main)
