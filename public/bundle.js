@@ -2067,26 +2067,24 @@ function warning(message) {
 
 
 
-class Main extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
-
-  render() {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'div',
-      { className: 'main' },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'nav',
-        null,
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__TabContainer__["a" /* default */], null)
-      ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__ProductList__["a" /* default */], { products: this.props.currentBooks }),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'footer',
-        null,
-        '\xA9 Company 2018'
-      )
-    );
-  }
-}
+const Main = props => {
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    'div',
+    { className: 'main' },
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'nav',
+      null,
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: '/images/logo.png' }),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__TabContainer__["a" /* default */], null)
+    ),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__ProductList__["a" /* default */], { products: props.currentBooks }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'footer',
+      null,
+      '\xA9 Company 2018'
+    )
+  );
+};
 
 const mapState = state => {
 
@@ -2106,6 +2104,9 @@ const mapState = state => {
       return acc;
     }, []);
   }
+
+  // if I had time, I'd have sort-order on the state like I have tabs, and I would
+  // sort based on that criteria here
 
   return {
     currentBooks

@@ -4,21 +4,19 @@ import TabContainer from './TabContainer'
 import ProductList from './ProductList'
 import { fetchBooks } from '../store'
 
-class Main extends React.Component {
-
-  render() {
-    return (
-      <div className="main">
-        <nav>
-          <TabContainer />
-        </nav>
-        <ProductList products={this.props.currentBooks} />
-        <footer>
-          © Company 2018
+const Main = (props) => {
+  return (
+    <div className="main">
+      <nav>
+        <img src="/images/logo.png" />
+        <TabContainer />
+      </nav>
+      <ProductList products={props.currentBooks} />
+      <footer>
+        © Company 2018
         </footer>
-      </div>
-    )
-  }
+    </div>
+  )
 }
 
 
@@ -27,7 +25,7 @@ const mapState = (state) => {
 
   let currentBooks = state.books;
   if (state.tabs !== 0) { //if we want a specific category
-    currentBooks = state.books[state.tabs-1].products;
+    currentBooks = state.books[state.tabs - 1].products;
   }
   else { // if we need to join all categories into one
     const totalBooks = currentBooks.map(bookList => bookList.products);
@@ -40,6 +38,9 @@ const mapState = (state) => {
       return acc;
     }, []);
   }
+
+  // if I had time, I'd have sort-order on the state like I have tabs, and I would
+  // sort based on that criteria here
 
   return {
     currentBooks,
